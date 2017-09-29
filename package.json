@@ -1,0 +1,21 @@
+{
+  "name": "shave",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dmurawsky/shave.git",
+  "author": "Daniel Murawsky <d.r.murawsky@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "relay": "relay-compiler --src ./ --exclude **/.next/** **/node_modules/** **/test/**  **/__generated__/** --schema ./azotheos.schema",
+    "products": "node misc/makeProducts.js",
+    "deploy": "now -e NODE_ENV=production -e STRIPE_SK_LIVE=@stripe-sk-live -e RELAY_ENDPOINT=@relay-endpoint"
+  },
+  "dependencies": {
+    "next": "^4.0.0-beta.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}
