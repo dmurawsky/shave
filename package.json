@@ -10,12 +10,19 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "relay": "relay-compiler --src ./ --exclude **/.next/** **/node_modules/** **/test/**  **/__generated__/** --schema ./azotheos.schema",
+    "backup": "graphcool pull --project cj84yneno0fbz0157621ft0m4 && git add . && git commit -m 'backup' && git push",
     "products": "node misc/makeProducts.js",
     "deploy": "now -e NODE_ENV=production -e STRIPE_SK_LIVE=@stripe-sk-live -e RELAY_ENDPOINT=@relay-endpoint"
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "isomorphic-fetch": "^2.2.1",
     "next": "^4.0.0-beta.2",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-apollo": "^1.4.16",
+    "react-dom": "^16.0.0",
+    "stripe": "^5.1.0"
   }
 }
