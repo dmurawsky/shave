@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs')
 const {categories, levels, brands} = require('./products')
 
 let products = [];
@@ -17,8 +17,7 @@ categories.map(cat=>{
   })
 })
 
+
 const path = __dirname + '/products.json'
-
 fs.writeFileSync(path, JSON.stringify(products, null, 2), 'utf-8')
-
 console.log(path, products.length)

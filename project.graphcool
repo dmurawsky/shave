@@ -1,5 +1,5 @@
 # project: cj84yneno0fbz0157621ft0m4
-# version: 4
+# version: 11
 
 type File implements Node {
   contentType: String!
@@ -10,28 +10,49 @@ type File implements Node {
   size: Int!
   updatedAt: DateTime!
   url: String! @isUnique
+  brandLogo: Brand @relation(name: "BrandLogoFile")
 }
 
 type User implements Node {
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
+  puchases: [Purchase!]! @relation(name: "UserPurchases")
 }
 
 type Product implements Node {
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
+  name: String!
+  price: Int!
+  description: String
+  brand: Brand! @relation(name: "ProductsBrand")
+  category: Category! @relation(name: "ProductsCategory")
+  puchases: [Purchase!]! @relation(name: "ProductPurchases")
+}
+
+type Purchase implements Node {
+  createdAt: DateTime!
+  id: ID! @isUnique
+  updatedAt: DateTime!
+  product: Product! @relation(name: "ProductPurchases")
+  user: User! @relation(name: "UserPurchases")
 }
 
 type Brand implements Node {
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
+  name: String!
+  logo: File @relation(name: "BrandLogoFile")
+  products: [Product!]! @relation(name: "ProductsBrand")
 }
 
 type Category implements Node {
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
+  name: String!
+  products: [Product!]! @relation(name: "ProductsCategory")
 }

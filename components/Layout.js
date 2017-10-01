@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import PropTypes from 'prop-types'
+import {InstantSearch} from 'react-instantsearch/dom'
+import Header from './Header'
 
-const Layout = ({children, path, title}) => (
+const Layout = ({children, path, title, index}) => (
   <div>
     <Head>
       <title>{title?title:'American Shave'}</title>
@@ -9,24 +11,25 @@ const Layout = ({children, path, title}) => (
       <link href='https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Lora:400,400i,700,700i' rel='stylesheet' />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+      <link rel="stylesheet" href="https://unpkg.com/react-instantsearch-theme-algolia@4.0.0/style.min.css" />
       <link href='/static/styles/global.css' rel='stylesheet' />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
     </Head>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="http://bulma.io">
-          <img src="/static/assets/logo.png" alt="American Shave Logo" width="112" />
-        </a>
-        <button class="button navbar-burger"><span/><span/><span/></button>
-      </div>
-    </nav>
-    {children}
+    <InstantSearch
+      appId="82UENGW5U2"
+      apiKey="17f885ff268f019956644f53a64a7a91"
+      indexName={process.env.NODE_ENV==='production'?'prod_'+index:'dev_'+index}
+    >
+      <Header />
+      {children}
+    </InstantSearch>
   </div>
 )
 
 Layout.propTypes = {
   path: PropTypes.string,
   title: PropTypes.string,
+  index: PropTypes.string.isRequired,
 }
 
 export default Layout;

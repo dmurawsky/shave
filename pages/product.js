@@ -1,12 +1,12 @@
 import withData from '../store/withData'
 import Layout from '../components/Layout'
-import Results from '../components/Results'
 import Footer from '../components/Footer'
+import ProductPage from '../components/ProductPage'
 
 export default withData(({url}) => {
   return (
     <Layout path={url.pathname} index="PRODUCTS">
-      <Results />
+      <ProductPage id={url.query.id} />
     </Layout>
   )
 })

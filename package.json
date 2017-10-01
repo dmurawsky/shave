@@ -11,18 +11,25 @@
     "start": "NODE_ENV=production node server.js",
     "relay": "relay-compiler --src ./ --exclude **/.next/** **/node_modules/** **/test/**  **/__generated__/** --schema ./azotheos.schema",
     "backup": "graphcool pull --project cj84yneno0fbz0157621ft0m4 && git add . && git commit -m 'backup' && git push",
-    "products": "node misc/makeProducts.js",
-    "deploy": "now -e NODE_ENV=production -e STRIPE_SK_LIVE=@stripe-sk-live -e RELAY_ENDPOINT=@relay-endpoint"
+    "deploy": "now -e NODE_ENV=production --public"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.1",
+    "graphql-request": "^1.3.6",
     "isomorphic-fetch": "^2.2.1",
     "next": "^4.0.0-beta.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-apollo": "^1.4.16",
     "react-dom": "^16.0.0",
+    "react-instantsearch": "^4.1.2",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
     "stripe": "^5.1.0"
+  },
+  "devDependencies": {
+    "algoliasearch": "^3.24.4"
   }
 }
