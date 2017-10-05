@@ -1,3 +1,3 @@
 export const cart = {
-  items: {}
+  items: {test:'test'}
 }

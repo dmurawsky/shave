@@ -2,16 +2,28 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  outline: none;
 }
 
-/*
- * -- BASE STYLES --
- * Most of these are inherited from Base, but I want to change a few.
- * Primary: #0A4D6D
- * Accent: #5F3300
- */
+html, body, body > div, #__next, #__next > div, #__next > div > div, .ais-InstantSearch__root, #wrapper {
+  min-height: 100%;
+}
+.clearfix:after, .ais-Hits__root:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.container {
+  padding: 20px;
+}
+body .ais-InstantSearch__root {
+  font-family: 'Open Sans Condensed', sans-serif!important;
+  font-weight: bold;
+}
 body {
-  font-family: Assistant, Helivetica, sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif!important;
   line-height: 1.7em;
   color: #999;
   font-size: 13px;
@@ -20,6 +32,169 @@ body {
 a, a:link, a:active, a:visited, a:hover {
   text-decoration: none;
   color: #084e6c;
+}
+
+.content img {
+  width: 100%;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+#wrapper {
+  box-shadow: 0px 3px 15px #111;
+  z-index: 10;
+  width: 1024px;
+  max-width: 1024px;
+  margin: 2px auto;
+  position: relative;
+  top: 55px;
+  background: white;
+}
+
+#leftAd, #rightAd {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  width: 51%;
+  background: #5F3300;
+}
+
+#leftAd > span, #rightAd > span {
+  font-size: 24px;
+  color: white;
+  display: block;
+}
+#leftAd > span {
+  position: absolute;
+  top: 300px;
+  left: 0px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+#rightAd > span {
+  position: absolute;
+  top: 300px;
+  right: 0px;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-3);
+}
+#leftAd {
+  left: 0px;
+}
+#rightAd {
+  right: 0px;
+  text-align: right;
+}
+.navbar-brand {
+  margin-right: 34px;
+}
+.navbar-item img {
+  max-height: 4rem!important;
+}
+#ExpandSelect_1 {
+  margin: 70px;
+}
+#searchSelect {
+  position: absolute;
+}
+#searchSelect .button.is-static::after {
+    border: 1px solid #00d1b2;
+    border-right: 0;
+    border-top: 0;
+    content: " ";
+    display: block;
+    height: .5em;
+    pointer-events: none;
+    position: absolute;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    width: .5em;
+    margin-top: -.375em;
+    right: 10px;
+    top: 50%;
+    z-index: 4;
+}
+#searchSelectFacade {
+  padding-right: 31px;
+}
+option {
+  width: inherit;
+}
+#search {
+  width: 100%;
+  margin-top: 20px;
+}
+#searchInput {
+  width: 100%;
+}
+.select:not(.is-multiple)::after {
+  border-color: #084e6c;
+  right: 10px;
+}
+
+.select select.is-active, .select select.is-focused, .select select:active, .select select:focus,.input.is-active,
+.input.is-focused, .input:active, .input:focus, .textarea.is-active, .textarea.is-focused, .textarea:active, .textarea:focus {
+  border: solid 1px #084e6c;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#searchBtn {
+  width: 42px;
+  padding: 9px 6px 3px 8px;
+  background: #084e6c;
+  border: solid 1px #084e6c;
+}
+
+#homePage {
+  min-height: 100%;
+  height: 600px;
+  margin-bottom: 60px;
+}
+
+#homePageHeader {
+  position: relative;
+  background: #54717b;
+}
+#homePageHeader div {
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  height: 100%;
+  text-align: right;
+}
+#homePageHeader h1, #homePageHeader h2 {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  color: white;
+}
+#homePageHeader h1 {
+  font-size: 44px;
+}
+#homePageHeader h2 {
+  font-size: 22px;
+  margin: 20px auto;
+}
+#homePageHeader button {
+  background: #0a4d6d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 18px;
+}
+
+.navbar-link::after {
+  border-color: #444;
 }
 
 .ais-RefinementList__itemCount, .ais-Pagination__item:hover .ais-Pagination__itemLink {
@@ -43,6 +218,7 @@ h5,
 h6,
 label {
   color: #0A4D6D;
+  font-family: 'Oswald', sans-serif;
 }
 
 hr {
@@ -50,14 +226,134 @@ hr {
   border-style: solid;
 }
 
+#brandHeaderAd {
+  font-size: 24px;
+  color: #084e6c;
+  padding: 28px 50px 20px;
+}
+
+#topAd {
+  width: 100%;
+  height: 55px;
+  /*background: url(https://images-na.ssl-images-amazon.com/images/G/01/airstream/upnav/C/C_latest_1x._CB514233832_.jpg);*/
+  background: #5F3300;
+  /*background: #084e6c;*/
+  font-size: 24px;
+  color: white;
+  padding: 18px;
+  text-align: center;
+  position: absolute;
+  z-index: 10px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+}
+
+#navHeader {
+  background: #084e6c;
+}
+
+.ais-SearchBox__root {
+  max-width: none;
+}
+
+#results {
+  padding: 20px;
+}
+
+.product {
+  float: left;
+  width: 220px;
+  margin: 10px;
+}
+.product .inc-dec:hover {
+  background-color: #eee;
+}
+
+.product .card-image {
+  width: 200px;
+}
+
+.prod-count {
+  cursor: default;
+}
+
 .navbar-item img {
   max-height: 3.75rem;
 }
 
 .ais-SearchBox__root {
-  margin-top: 14px;
+  margin-top: 20px;
+  height: 38px;
 }
 
+#mainNav {
+  padding: 0px;
+  box-shadow: 0px -5px 16px #151515;
+  z-index: 12;
+}
+#superNav {
+  background: #084e6c;
+  min-height: 2.25rem;
+}
+#superNav .navbar-item {
+  color: white;
+}
+#superNav .navbar-item:hover {
+  background: #01293C;
+}
+#superNav .navbar-item a {
+  color: white;
+}
+#subNav > .navbar-menu > a.navbar-item {
+  font-size: 17px;
+  padding-right: 0px;
+  padding-left: 22px;
+}
+#subNav > .navbar-menu > a.navbar-item > span {
+  border-right: solid 1px #eee;
+  padding-right: 22px;
+  line-height: 17px;
+}
+#subNav > .navbar-menu > a.navbar-item:last-child > span {
+  border: none;
+}
+#subNav {
+  min-height: 2.25rem;
+  /*border-top: solid 1px #ddd;*/
+}
+#categoriesNav {
+  width: 138px;
+  background: #ddd;
+  margin-right: 45px;
+  z-index: 99;
+}
+#categoriesNav > a {
+  padding-left: 30px;
+  padding-right: 41px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+#categoriesNav a {
+  color: #444;
+}
+#cart {
+  background: url('/static/assets/cart.svg') no-repeat top center;
+  background-size: contain;
+  color: white;
+  z-index: 99;
+  padding: 8px 26px 33px;
+  position: absolute;
+  top: 0px;
+  right: 84px;
+  width: 74px;
+}
+#cart span {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  display: block;
+}
 @media (min-width: 48em) {
 
 }
