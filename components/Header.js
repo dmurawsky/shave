@@ -25,15 +25,15 @@ class Header extends React.Component {
     return (
       <div>
         <nav id="superNav" className="navbar" role="navigation" aria-label="main navigation">
-          <div className="navbar-menu">
+          <div className="navbar-menu" id="superNavLeft">
             <a className="navbar-item">Today's Deals</a>
-            <a className="navbar-item">Recent Purchases</a>
-            <a className="navbar-item">Gift Cards</a>
+            <a className="navbar-item">Find a Store</a>
+            <a className="navbar-item">Barber Services</a>
             <a className="navbar-item">Support</a>
           </div>
           <div className="navbar-menu">
             <div className="navbar-end">
-              <a className="navbar-item">Account</a>
+              <a className="navbar-item" style={{marginRight: 160}}>Sign In | Register</a>
               <Cart />
             </div>
           </div>
@@ -41,13 +41,13 @@ class Header extends React.Component {
         <nav id="mainNav" className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
             <Link href="/">
-              <a className="navbar-item">
+              <a id="logo">
                 <img src="/static/assets/logo.png" alt="American Shave Logo" />
               </a>
             </Link>
           </div>
           <div id="search" className="field has-addons">
-            <p className="control" onClick={this._select}>
+            <p className="control" onClick={this._select} style={{cursor: 'pointer'}}>
               <a id="searchSelectFacade" className="button is-static">{this.state.category}</a>
             </p>
             <p className="control">
@@ -68,7 +68,7 @@ class Header extends React.Component {
               </span>
             </p>
             <p id="searchInput" className="control">
-              <input className="input" type="text" placeholder="Search here..." />
+              <input className="input" type="text" />
             </p>
             <p className="control">
               <a id="searchBtn" className="button">

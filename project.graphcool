@@ -1,5 +1,5 @@
 # project: cj84yneno0fbz0157621ft0m4
-# version: 14
+# version: 15
 
 type File implements Node {
   contentType: String!
@@ -19,6 +19,7 @@ type User implements Node {
   email: String! @isUnique
   updatedAt: DateTime!
   puchases: [Purchase!]! @relation(name: "UserPurchases")
+  auth0UserId: String @isUnique
 }
 
 type Product implements Node {
