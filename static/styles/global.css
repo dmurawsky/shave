@@ -154,9 +154,9 @@ option {
 #search .select:not(.is-multiple)::after {
   top: 55%;
 }
-#categoriesNav .navbar-link::after {
+.sub-nav-dropdown .navbar-link::after {
   right: 14px;
-  top: 67%;
+  top: 62%;
   transform: none;
   width: 0;
   height: 0;
@@ -314,19 +314,22 @@ hr {
   box-shadow: 0px -5px 16px #151515;
   z-index: 12;
 }
+#mainNav .field.has-addons .control:first-child .button, #mainNav .field.has-addons .control:last-child .button {
+  border-radius: 0px;
+}
 #superNav {
   background: #084e6c;
   min-height: 2.25rem;
 }
-#superNav .navbar-item {
+#superNav .navbar-menu .navbar-item {
   color: white;
-  font-size: 14px;
-  padding: 0.5rem 13px;
+  font-size: 13px;
+  padding: 0.5rem 11px;
 }
-#superNav .navbar-item:hover {
+#superNav .navbar-menu .navbar-item:hover {
   background: #01293C;
 }
-#superNav .navbar-item a {
+#superNav .navbar-menu .navbar-item a {
   color: white;
 }
 #logo {
@@ -335,7 +338,7 @@ hr {
 #logo img {
   height: 64px;
 }
-#subNav > .navbar-menu > a.navbar-item:hover {
+#subNav .navbar-menu a.navbar-item:hover {
   background: #084e6c;
   color: #f9f9f9;
 }
@@ -344,11 +347,11 @@ hr {
 }
 #subNav > .navbar-menu > a.navbar-item {
   font-size: 17px;
-  padding: 3px 0px 0px 22px;
+  padding: 3px 0px 0px 18px;
 }
 #subNav > .navbar-menu > a.navbar-item > span {
   border-right: solid 1px #eee;
-  padding-right: 22px;
+  padding-right: 18px;
   line-height: 21px;
 }
 #subNav > .navbar-menu > a.navbar-item:last-child > span {
@@ -360,21 +363,29 @@ hr {
   /*border-top: solid 1px #ddd;*/
 }
 #categoriesNav {
-  width: 138px;
+  border-right: solid 1px #dbdbdb;
+  margin-right: 9px;
+}
+#categoriesNav a {
+  padding-left: 25px;
+}
+#accountNav {
+  border-left: solid 1px #dbdbdb;
+}
+#accountNav a {
+  padding-left: 23px;
+}
+.sub-nav-dropdown {
+  width: 122px;
   background: #f5f5f5;
-  margin-right: 32px;
   z-index: 99;
   border-top: solid 1px #dbdbdb;
-  border-right: solid 1px #dbdbdb;
 }
-#categoriesNav > a {
-  padding-left: 30px;
-  padding-right: 35px;
+.sub-nav-dropdown > a {
+  padding-right: 28px;
   font-size: 14px;
   letter-spacing: 0.5px;
   line-height: 13px;
-}
-#categoriesNav a {
   color: #444;
 }
 #cart {
