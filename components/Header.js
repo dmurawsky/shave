@@ -26,10 +26,10 @@ class Header extends React.Component {
       <div>
         <nav id="superNav" className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-menu" id="superNavLeft">
-            <a className="navbar-item">Today's Deals</a>
-            <a className="navbar-item">Find a Store</a>
-            <a className="navbar-item">Barber Shop</a>
-            <a className="navbar-item">Customer Service</a>
+            <a className="navbar-item supernav-tab">Today's Deals</a>
+            <a className="navbar-item supernav-tab">Find a Store</a>
+            <a className="navbar-item supernav-tab">Barber Shop</a>
+            <a className="navbar-item supernav-tab">Customer Service</a>
           </div>
           <div className="navbar-menu">
             <div className="navbar-end">
@@ -88,6 +88,7 @@ class Header extends React.Component {
             <div id="categoriesNav" className="sub-nav-dropdown navbar-item has-dropdown is-hoverable">
               <a className="navbar-link is-active">Categories</a>
               <div className="navbar-dropdown is-boxed">
+                <a className="navbar-item">Best Sellers</a>
                 <a className="navbar-item">Shave Care</a>
                 <a className="navbar-item">Hair Care</a>
                 <a className="navbar-item">Beard Care</a>
@@ -113,18 +114,18 @@ class Header extends React.Component {
             <div className="navbar-end">
               <div id="accountNav" className="sub-nav-dropdown navbar-item has-dropdown is-hoverable">
                 <a className="navbar-link is-active">My Account</a>
-                <div className="navbar-dropdown is-boxed">
-                  <a className="navbar-item">Your Account</a>
-                  <a className="navbar-item">Your Orders</a>
-                  <a className="navbar-item">Your Saved Items</a>
+                <div className="navbar-dropdown is-boxed is-right">
+                  <Link href="/account"><a className="navbar-item">Your Account</a></Link>
+                  <Link href="/orders"><a className="navbar-item">Your Orders</a></Link>
+                  <Link href="/saved-items"><a className="navbar-item">Your Saved Items</a></Link>
                   <div className="navbar-divider" />
-                  <a className="navbar-item">Brotherhood Rewards</a>
-                  <a className="navbar-item">Account Services</a>
-                  <a className="navbar-item">Replenishment Service</a>
-                  <a className="navbar-item">Box Delivery Service</a>
-                  <a className="navbar-item">Education Center</a>
-                  <a className="navbar-item">American Shave Mailer</a>
-                  <a className="navbar-item">Notification Settings</a>
+                  <Link href="/brotherhood-rewards"><a className="navbar-item">Brotherhood Rewards</a></Link>
+                  <Link href="/account-services"><a className="navbar-item">Account Services</a></Link>
+                  <Link href="/replenishment-services"><a className="navbar-item">Replenishment Service</a></Link>
+                  <Link href="/box-delivery-service"><a className="navbar-item">Box Delivery Service</a></Link>
+                  <Link href="/eductation-center"><a className="navbar-item">Education Center</a></Link>
+                  <Link href="/mailer"><a className="navbar-item">American Shave Mailer</a></Link>
+                  <Link href="/notification-settings"><a className="navbar-item">Notification Settings</a></Link>
                   <div className="navbar-divider" />
                   <a className="navbar-item">Sign Out</a>
                 </div>
@@ -132,28 +133,23 @@ class Header extends React.Component {
             </div>
           </div>
         </nav>
+        <style jsx>{`
+          .supernav-tab {
+            -webkit-box-shadow: 8px 12px 25px 2px rgba(0,0,0,0.4);
+            -moz-box-shadow: 8px 12px 25px 2px rgba(0,0,0,0.4);
+            box-shadow: 8px 12px 25px 2px rgba(0,0,0,0.4);
+            border: 0px solid #000000;
+            -webkit-transition: padding 0.2s ease, margin 0.2s ease;
+            -moz-transition: padding 0.2s ease, margin 0.2s ease;
+            -o-transition: padding 0.2s ease, margin 0.2s ease;
+            -ms-transition: padding 0.2s ease, margin 0.2s ease;
+            transition: padding 0.2s ease, margin 0.2s ease;
+          }
+        `}</style>
       </div>
     )
   }
 }
-
-
-// <div className="navbar-item has-dropdown is-hoverable">
-//   <a className="navbar-link is-active" style={{padding:0}}>Professional</a>
-//   <div className="navbar-dropdown is-boxed">
-//     <a className="navbar-item">Shave Care</a>
-//     <a className="navbar-item">Hair Care</a>
-//     <a className="navbar-item">Beard Care</a>
-//     <a className="navbar-item">Nail Care</a>
-//     <a className="navbar-item">Skin Care</a>
-//     <a className="navbar-item">Shave Hardware</a>
-//     <a className="navbar-item">Electric Hardware</a>
-//     <a className="navbar-item">Maintenance</a>
-//     <a className="navbar-item">Accessories</a>
-//     <a className="navbar-item">Blade Refills</a>
-//     <a className="navbar-item">Leather Goods</a>
-//   </div>
-// </div>
 
 
 export default Header;

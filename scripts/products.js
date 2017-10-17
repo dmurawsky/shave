@@ -1,33 +1,19 @@
-module.exports = {
-  categories: [
-    'Straight Razor',
-    'Safety Razor',
-    '5 Blade Razor',
-    '3 Blade Razor',
-    'Electric Shavers',
-    'Blades',
-    'Razor Stands',
-    'Shaving Cream',
-    'Shaving Soap',
-    'After-Shave',
-    'Shaving Brush',
-    'Fragrances',
-  ],
-  levels: [
-    'Basic',
-    'Plus',
-    'Premium',
-  ],
-  brands: [
-    'Crew',
-    'Baxter',
-    'Premium',
-    'Merkur',
-    'Dovo',
-    'Simpson’s',
-    'D.R. Harris',
-    'Truefitt and Hill',
-    'Proraso',
-    'Edwin Jagger',
-  ]
-};
+const products = [
+  {
+    name: 'Brush',
+    price: 14.45,
+    photo: '/static/assets/products/prod1.jpg'
+  },
+  {
+    name: 'Razor',
+    price: 53.44,
+    photo: '/static/assets/products/prod2.jpg'
+  },
+  {
+    name: 'Steel Razor',
+    price: 78.91,
+    photo: '/static/assets/products/prod3.jpg'
+  },
+]
+
+export default products

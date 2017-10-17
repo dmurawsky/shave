@@ -1,7 +1,7 @@
 # project: cj84yneno0fbz0157621ft0m4
-# version: 15
+# version: 19
 
-type File implements Node {
+type File @model {
   contentType: String!
   createdAt: DateTime!
   id: ID! @isUnique
@@ -10,41 +10,98 @@ type File implements Node {
   size: Int!
   updatedAt: DateTime!
   url: String! @isUnique
+  product: Product @relation(name: "ProductFile")
   brandLogo: Brand @relation(name: "BrandLogoFile")
 }
 
-type User implements Node {
+type User @model {
   createdAt: DateTime!
   id: ID! @isUnique
   email: String! @isUnique
   updatedAt: DateTime!
   puchases: [Purchase!]! @relation(name: "UserPurchases")
+  paymentMethods: [PaymentMethod!]! @relation(name: "UserPaymentMethods")
+  orders: [Order!]! @relation(name: "UserOrders")
+  addresses: [Address!]! @relation(name: "UserAddresses")
   auth0UserId: String @isUnique
+  reviews: [Review!]! @relation(name: "UserReviews")
 }
 
-type Product implements Node {
+type Product @model {
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
   name: String!
-  price: Int!
+  price: Float!
   description: String
+  photo: File @relation(name: "ProductFile")
   brand: Brand! @relation(name: "ProductsBrand")
   category: Category! @relation(name: "ProductsCategory")
   recommended: [Product!]! @relation(name: "RecommendedProducts")
   puchases: [Purchase!]! @relation(name: "ProductPurchases")
+  reviews: [Review!]! @relation(name: "ProductReviews")
 }
 
-type Purchase implements Node {
+type Purchase @model {
   createdAt: DateTime!
   id: ID! @isUnique
   quantity: Int!
   updatedAt: DateTime!
   product: Product! @relation(name: "ProductPurchases")
   user: User! @relation(name: "UserPurchases")
+  order: Order! @relation(name: "OrderPurchases")
 }
 
-type Brand implements Node {
+type Order @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  subtotal: Float!
+  tax: Float!
+  total: Float!
+  paymentMethod: PaymentMethod! @relation(name: "OrdersPaymentMethod")
+  purchases: [Purchase!]! @relation(name: "OrderPurchases")
+  address: Address! @relation(name: "OrdersAddress")
+  user: User! @relation(name: "UserOrders")
+}
+
+type Address @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  address1: String!
+  address2: String!
+  state: String!
+  city: String!
+  zip: String!
+  orders: [Order!]! @relation(name: "OrdersAddress")
+  user: User! @relation(name: "UserAddresses")
+}
+
+type PaymentMethod @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  stripeId: String
+  name: String!
+  token: String!
+  last4: String!
+  orders: [Order!]! @relation(name: "OrdersPaymentMethod")
+  user: User! @relation(name: "UserPaymentMethods")
+}
+
+type Review @model {
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  id: ID! @isUnique
+  content: String!
+  stars: Float!
+  product: Product! @relation(name: "ProductReviews")
+  user: User! @relation(name: "UserReviews")
+}
+
+type Brand @model {
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
@@ -53,7 +110,7 @@ type Brand implements Node {
   products: [Product!]! @relation(name: "ProductsBrand")
 }
 
-type Category implements Node {
+type Category @model {
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
