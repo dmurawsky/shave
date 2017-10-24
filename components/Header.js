@@ -135,9 +135,9 @@ class Header extends React.Component {
         </nav>
         <style jsx>{`
           .supernav-tab {
-            -webkit-box-shadow: 8px 12px 25px 2px rgba(0,0,0,0.4);
-            -moz-box-shadow: 8px 12px 25px 2px rgba(0,0,0,0.4);
-            box-shadow: 8px 12px 25px 2px rgba(0,0,0,0.4);
+            -webkit-box-shadow: -5px 0 6px -2px rgba(0,0,0,0.5);
+            -moz-box-shadow: -5px 0 6px -2px rgba(0,0,0,0.5);
+            box-shadow: -5px 0 6px -2px rgba(0,0,0,0.5);
             border: 0px solid #000000;
             -webkit-transition: padding 0.2s ease, margin 0.2s ease;
             -moz-transition: padding 0.2s ease, margin 0.2s ease;

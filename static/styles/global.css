@@ -75,8 +75,8 @@ button {
 #wrapper {
   box-shadow: 0px 3px 15px #111;
   z-index: 10;
-  width: 1024px;
-  max-width: 1024px;
+  /*width: 1024px;
+  max-width: 1024px;*/
   margin: 2px auto;
   position: relative;
   top: 55px;
@@ -165,7 +165,7 @@ option {
 }
 #search {
   width: 100%;
-  margin-top: 25px;
+  margin-top: 18px;
 }
 #searchInput {
   width: 100%;
@@ -279,7 +279,7 @@ hr {
 #brandHeaderAd {
   font-size: 24px;
   color: #084e6c;
-  padding: 28px 60px 20px;
+  padding: 28px 120px 20px;
 }
 
 #topAd {
@@ -339,11 +339,13 @@ hr {
 
 #mainNav {
   padding: 0px;
-  box-shadow: 0px -5px 16px #151515;
   z-index: 12;
 }
-#mainNav .field.has-addons .control:first-child .button, #mainNav .field.has-addons .control:last-child .button {
-  border-radius: 0px;
+#mainNav .field.has-addons .control:first-child .button {
+  border-radius: 3px 0px 0px 3px;
+}
+#mainNav .field.has-addons .control:last-child .button {
+  border-radius: 0px 3px 3px 0px;
 }
 #superNav {
   background: #084e6c;
@@ -361,7 +363,8 @@ hr {
   color: white;
 }
 #logo {
-  padding: .7rem 1rem 0.3rem;
+  padding: .3rem 1rem 0.3rem;
+  /*padding: .7rem 1rem 0.3rem;*/
 }
 #logo img {
   height: 64px;
@@ -374,13 +377,13 @@ hr {
   border-color: #084e6c;
 }
 #subNav > .navbar-menu > a.navbar-item {
-  font-size: 17px;
-  padding: 3px 0px 0px 18px;
+  font-size: 18px;
+  padding: 3px 0px 0px 15px;
 }
 #subNav > .navbar-menu > a.navbar-item > span {
-  border-right: solid 1px #eee;
-  padding-right: 18px;
+  padding-right: 13px;
   line-height: 21px;
+  color: #222;
 }
 #subNav > .navbar-menu > a.navbar-item:last-child > span {
   border: none;
@@ -388,26 +391,24 @@ hr {
 #subNav {
   min-height: 31px;
   box-shadow: 0px 0px 6px;
-  /*border-top: solid 1px #ddd;*/
 }
 #categoriesNav {
-  border-right: solid 1px #dbdbdb;
-  margin-right: 9px;
+  margin-right: 49px;
 }
 #categoriesNav a {
-  padding-left: 25px;
-}
-#accountNav {
-  border-left: solid 1px #dbdbdb;
+  padding-left: 51px;
+  font-size: 15px;
 }
 #accountNav a {
-  padding-left: 23px;
+  padding-left: 33px;
+  font-size: 15px;
+}
+#accountNav a:after {
+  right: 20px;
 }
 .sub-nav-dropdown {
-  width: 122px;
-  background: #f5f5f5;
+  width: 160px;
   z-index: 99;
-  border-top: solid 1px #dbdbdb;
 }
 .sub-nav-dropdown > a {
   padding-right: 28px;
@@ -449,7 +450,7 @@ hr {
   display: block;
 }
 #search .input, #search .textarea, #search .button, #search .select select {
-  height: 31px;
+  height: 35px;
 }
 @media (min-width: 48em) {
 

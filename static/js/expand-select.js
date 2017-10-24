@@ -1,16 +1,5 @@
 function ExpandSelect(select, maxOptionsVisible)
 {
-	//
-	// ExpandSelect 1.00
-	// Copyright (c) Czarek Tomczak. All rights reserved.
-	//
-	// License:
-	//	New BSD License (free for any use, read more at http://www.opensource.org/licenses/bsd-license.php)
-	//
-	// Project's website:
-	//	http://code.google.com/p/expandselect/
-	//
-
 	if (typeof maxOptionsVisible == "undefined") {
 		maxOptionsVisible = 20;
 	}
@@ -79,7 +68,7 @@ function ExpandSelect(select, maxOptionsVisible)
 
   select.style.position = "absolute";
   select.style.borderRadius = "5px";
-  select.style.padding = "5px";
+  // select.style.padding = "5px";
   select.style.fontSize = "15px";
   select.style.color = "#666";
   select.style.borderColor = "#dbdbdb";

@@ -41,24 +41,28 @@ const HomePage = () => (
     </Slider>
     <section id="homePageBoxes">
       <div className="card home-box">
-        <p className="home-title">Test</p>
-        <p>Test</p>
+        <p className="home-title" style={{borderBottom: 'solid 5px #333'}}>Brotherhood Rewards</p>
+        <p>Brotherhood Rewards Description</p>
       </div>
       <div className="card home-box">
-        <p className="home-title">Test</p>
-        <p>Test</p>
+        <p className="home-title" style={{borderBottom: 'solid 5px #0A4D6D'}}>The Shave Expert</p>
+        <p>The Shave Expert Description</p>
       </div>
       <div className="card home-box">
-        <p className="home-title">Test</p>
-        <p>Test</p>
+        <p className="home-title" style={{borderBottom: 'solid 5px #444'}}>Build Your Set</p>
+        <p>Build Your Set Description</p>
       </div>
       <div className="card home-box">
-        <p className="home-title">Test</p>
-        <p>Test</p>
+        <p className="home-title" style={{borderBottom: 'solid 5px #156085'}}>Replenishment Serivce</p>
+        <p>Replenishment Serivce Description</p>
       </div>
       <div className="card home-box">
-        <p className="home-title">Test</p>
-        <p>Test</p>
+        <p className="home-title" style={{borderBottom: 'solid 5px #666'}}>Barber Services</p>
+        <p>Barber Services Description</p>
+      </div>
+      <div className="card home-box">
+        <p className="home-title" style={{borderBottom: 'solid 5px #327392'}}>Recent Views</p>
+        <p>Recent Views Description</p>
       </div>
     </section>
     <section id="homePageHeader">
@@ -91,10 +95,10 @@ const HomePage = () => (
         padding: 10px;
       }
       .home-box .home-title {
+        color: #222;
         text-transform: uppercase;
         line-height: 30px;
         font-size: 22px;
-        border-bottom: solid 5px #ccc;
       }
     `}</style>
   </div>
