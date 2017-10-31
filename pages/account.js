@@ -1,11 +1,12 @@
-import withData from '../store/withData'
 import Layout from '../components/Layout'
 import Account from '../components/Account'
+import withRedux from 'next-redux-wrapper'
+import { initStore } from '../store'
 
-export default withData(({url}) => {
-  return (
-    <Layout path={url.pathname} index="PRODUCTS">
-      <Account />
-    </Layout>
-  )
-})
+const AccountPage = ({pathname}) => (
+  <Layout path={pathname} index="PRODUCTS" title="Account | American Shave">
+    <Account />
+  </Layout>
+)
+
+export default withRedux(initStore)(AccountPage)

@@ -1,8 +1,19 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import {Highlight} from 'react-instantsearch/dom'
+import {database,auth} from 'firebase'
+import {connect} from 'react-redux'
 
-const Product = ({hit, increment, decrement, inCart}) => (
+
+const increment = id => {
+  database().ref(`users/${auth().currentUser.uid}/cart/items/${id}`)
+    .transaction(qty => (qty?qty+1:1))
+}
+const decrement = id => {
+  database().ref(`users/${auth().currentUser.uid}/cart/items/${id}`)
+    .transaction(qty => (qty?qty-1:null))
+}
+
+const Product = ({hit, qty}) => (
   <div className="product">
     <div className="card">
       <div className="card-image">
@@ -12,17 +23,21 @@ const Product = ({hit, increment, decrement, inCart}) => (
       </div>
       <div className="card-content">
         <div className="content" style={{height: 40}}>
-          <Link href={'/product?id='+hit.id}>
+          <Link href={'/product?id=' + hit.firebaseKey}>
             <strong>
-              <a><Highlight attributeName="name" hit={hit} /></a>
+              <a>{hit.title}</a>
             </strong>
           </Link>
         </div>
       </div>
       <footer className="card-footer">
-        <a href="#" className="inc-dec card-footer-item"><i className="fa fa-minus" aria-hidden="true"></i></a>
-        <a className="prod-count card-footer-item">0</a>
-        <a href="#" className="inc-dec card-footer-item"><i className="fa fa-plus" aria-hidden="true"></i></a>
+        <a onClick={decrement.bind(this, hit.firebaseKey)} className="inc-dec card-footer-item">
+          <i className="fa fa-minus" aria-hidden="true"/>
+        </a>
+        <a className="prod-count card-footer-item">{qty?qty:0}</a>
+        <a onClick={increment.bind(this, hit.firebaseKey)} className="inc-dec card-footer-item">
+          <i className="fa fa-plus" aria-hidden="true"/>
+        </a>
       </footer>
     </div>
   </div>
@@ -30,8 +45,9 @@ const Product = ({hit, increment, decrement, inCart}) => (
 
 Product.propTypes = {
   hit: PropTypes.object.isRequired,
-  // increment: PropTypes.func.isRequired,
-  // decrement: PropTypes.func.isRequired,
+  qty: PropTypes.number,
 }
 
-export default Product;
+export default connect((s,{hit}) => ({
+  qty: s.cart.items[hit.firebaseKey],
+}), null)(Product)

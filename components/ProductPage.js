@@ -1,46 +1,26 @@
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 
-import {gql, graphql} from 'react-apollo'
 
-const ProductPage = ({id, data}) => {
-  if (data.Product) {
-    return (
-      <div className="content container">
-        <h1>{data.Product.name}</h1>
-        <p>{data.Product.description}</p>
-      </div>
-    )
-  } else {
-    return null
-  }
-}
+const ProductPage = ({productId}) => (
+  <div id="productPage" className="container page">
+    <div className="content">
+      <h1>{product.name}</h1>
+      <p>{product.description}</p>
+    </div>
+    <style jsx>{`
+      #productPage {
+
+      }
+    `}</style>
+  </div>
+)
 
 ProductPage.propTypes = {
-  id: PropTypes.string.isRequired,
-  data: PropTypes.object
+  product: PropTypes.object.isRequired,
+  productId: PropTypes.string.isRequired,
 }
 
-const allItems = gql`
-  query Product($id: ID!) {
-    Product(id: $id) {
-      name
-      description
-      price
-      id
-      brand {
-        id
-        name
-      }
-      category {
-        id
-        name
-      }
-    }
-  }
-`
-
-
-export default graphql(allItems, {
-  options: {},
-  props: ({data, id}) => ({ data, variables: { id } })
-})(ProductPage)
+export default connect((s,{productId}) => ({
+  product: s.products[productId],
+}))(ProductPage)

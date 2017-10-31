@@ -2,12 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import {SearchBox} from 'react-instantsearch/dom'
 import Cart from './Cart'
+import {connect} from 'react-redux'
+import {auth} from 'firebase'
 
 class Header extends React.Component {
   constructor (props, context) {
     super(props, context)
     this._onChange = this._onChange.bind(this)
     this._select = this._select.bind(this)
+    this._signOut = this._signOut.bind(this)
     this.state = { category: 'All' }
   }
 
@@ -19,6 +22,11 @@ class Header extends React.Component {
 
   _select () {
     window.ExpandSelect(this.select)
+  }
+
+  _signOut (e) {
+    e.preventDefault()
+    auth().signOut()
   }
 
   render () {
@@ -33,7 +41,16 @@ class Header extends React.Component {
           </div>
           <div className="navbar-menu">
             <div className="navbar-end">
-              <a className="navbar-item" style={{marginRight: 141}}>Sign In | Register</a>
+              {this.props.profile === null && (
+                <Link href="/sign-up">
+                  <a id="signUpBtn" className="navbar-item" style={{marginRight: 141}}>Sign In | Register</a>
+                </Link>
+              )}
+              {this.props.profile !== null && (
+                <Link href="/account">
+                  <a id="hey" className="navbar-item" style={{marginRight: 141}}>Hey {this.props.profile.firstName}</a>
+                </Link>
+              )}
               <Cart />
             </div>
           </div>
@@ -68,9 +85,9 @@ class Header extends React.Component {
                 </select>
               </span>
             </p>
-            <p id="searchInput" className="control">
-              <input className="input" type="text" />
-            </p>
+            <div id="searchInput" className="control">
+              <SearchBox placeholder="" />
+            </div>
             <p className="control">
               <a id="searchBtn" className="button">
                 <img src="/static/assets/search.svg" />
@@ -127,7 +144,7 @@ class Header extends React.Component {
                   <Link href="/mailer"><a className="navbar-item">American Shave Mailer</a></Link>
                   <Link href="/notification-settings"><a className="navbar-item">Notification Settings</a></Link>
                   <div className="navbar-divider" />
-                  <a className="navbar-item">Sign Out</a>
+                  <a id="signOut" className="navbar-item" onClick={this._signOut}>Sign Out</a>
                 </div>
               </div>
             </div>
@@ -152,4 +169,6 @@ class Header extends React.Component {
 }
 
 
-export default Header;
+export default connect(s => ({
+  profile: s.profile,
+}))(Header);

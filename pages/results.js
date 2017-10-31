@@ -1,12 +1,12 @@
-import withData from '../store/withData'
 import Layout from '../components/Layout'
-import Results from '../components/Results'
-import Footer from '../components/Footer'
+import ResultsPage from '../components/ResultsPage'
+import withRedux from 'next-redux-wrapper'
+import { initStore } from '../store'
 
-export default withData(({url}) => {
-  return (
-    <Layout path={url.pathname} index="PRODUCTS">
-      <Results />
-    </Layout>
-  )
-})
+const Results = ({pathname}) => (
+  <Layout path={pathname} index="PRODUCTS">
+    <ResultsPage />
+  </Layout>
+)
+
+export default withRedux(initStore)(Results)

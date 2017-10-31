@@ -1,0 +1,61 @@
+users:
+  user_auth_id_1:
+    cart:
+      items:
+        product_id_1: 3
+    profile:
+      firstName: Daniel
+    orders:
+      order_id_1:
+        paymentMethod: user_auth_id_1/paymentMethods/paymentMethod_id_1
+        address: user_auth_id_1/addresses/address_id_1
+        total: 1234
+        tax: 1234
+        subtotal: 1234
+        purchases:
+          purchase_id_1:
+            product_id: product_id_1
+            name: Shaver
+            qty: 3
+            price: 2595
+            description: This thing really shaves
+            photo: https://s3link.aws.com/209ufjsjdf
+            brand: brand_id_1
+            category_id_1: 1
+            category_id_2: 0
+            recommended:
+              product_id_2: 1
+            reviews:
+              review_id_1:
+                user_id: user_id_1
+    account:
+      addresses:
+        address_id_1:
+          address1: '200 Herons Run'
+      paymentMethods:
+        paymentMethod_id_1:
+          last4: '9283'
+products:
+  product_id_1:
+    createdAt: yesterday
+    updatedAt: today
+    name: Shaver
+    price: 2595
+    description: This thing shaves
+    photo: https://s3link.aws.com/209ufjsjdf
+    brand: brand_id_1
+    category_id_1: 1
+    category_id_2: 0
+    recommended:
+      product_id_2: 1
+    reviews:
+      review_id_1:
+        uid: user_auth_id_1
+categories:
+  category_id_1:
+    name: Shavers
+  category_id_2:
+    name: Razors
+brands:
+  brand_id_1:
+    name: American Crew

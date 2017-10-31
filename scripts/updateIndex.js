@@ -1,67 +1,36 @@
-// const {request} = require('graphql-request')
-// const apiUri = 'https://api.graph.cool/simple/v1/cj84yneno0fbz0157621ft0m4'
-
+require('dotenv').config()
 const algoliasearch = require('algoliasearch')
-const client = algoliasearch('82UENGW5U2', '680c8e335192c467542b3f057ce83533')
+const { initializeApp, database } = require('firebase')
+const Promise = require('bluebird');
 
+const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_ADMIN_KEY)
+initializeApp({
+  apiKey: 'AIzaSyAtLrsgz5zdjLDbQ-RO58IJLk0jF5vDQVw',
+  authDomain: 'american-shave-staging.firebaseapp.com',
+  databaseURL: 'https://american-shave-staging.firebaseio.com',
+  projectId: 'american-shave-staging',
+})
 
-// const buildIndexes = (type, types) => {
-//   types.map(({name}) => {
-//     const index = client.initIndex(`dev_${type.toUpperCase()}_${name.replace(/\W/g, '').toUpperCase()}`)
-//     request(apiUri, queryProducts(type, name)).then(({allProducts}) => {
-//       index.addObjects(allProducts, console.log)
-//     })
-//   })
-// }
-//
-// const queryType = type => `
-//   query ${type} {
-//     all${type} {
-//       id
-//       name
-//     }
-//   }
-// `
-//
-// const queryProducts = (type, name) => `
-//   query Products {
-//     allProducts${type&&name?`(filter: {
-//       ${type}: { name: "${name}"}
-//     })`:``} {
-//       id
-//       name
-//       price
-//       description
-//       brand { id, name }
-//       category { id, name }
-//     }
-//   }
-// `
-
+const prodsRef = database().ref('products')
 const index = client.initIndex(`dev_PRODUCTS`)
 
 index.search({query: '',hitsPerPage: 500}).then(({hits}) => {
-  hits.map(({objectID,brand,category}) => {
-    index.partialUpdateObject({
-      category: category.name,
-      brand: brand.name,
-      objectID,
+  prodsRef.on('value', snap => {
+    const products = snap.val()
+    const proms = Object.keys(products).map(firebaseKey => {
+      let prom
+      hits.map(({objectID, title}) => {
+        if (title === products[firebaseKey].name) {
+          const update = {
+            price: products[firebaseKey].price,
+            objectID,
+          }
+          console.log('Updating: ' + JSON.stringify(update))
+          prom = index.partialUpdateObject(update)
+        }
+      })
+      return prom
     })
+    Promise.all(proms).then(() => process.exit())
   })
 })
-
-//
-// index.searchForFacetValues({
-//   facetName: 'category',
-//   facetQuery: 'cream'
-// }, function(err, content) {
-//   if (err) {
-//     console.error(err)
-//     return;
-//   }
-//
-//   console.log(content.facetHits);
-// })
-
-// request(apiUri, queryType('Categories')).then(({allCategories})=>buildIndexes('category', allCategories))
-// request(apiUri, queryType('Brands')).then(({allBrands})=>buildIndexes('brand', allBrands))

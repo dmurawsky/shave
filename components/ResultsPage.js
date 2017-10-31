@@ -1,13 +1,14 @@
 import {
-  Hits,
+  InfiniteHits,
   RefinementList,
   CurrentRefinements,
   ClearAll,
   Pagination,
+  connectHits,
 } from 'react-instantsearch/dom'
 import Product from './Product'
 
-const Results = () => (
+const ResultsPage = () => (
   <div id="results" className="content">
     <div className="columns">
       <div className="column is-one-quarter">
@@ -18,11 +19,10 @@ const Results = () => (
         <RefinementList attributeName="brand" withSearchBox />
       </div>
       <div className="column">
-        <Hits hitComponent={Product} />
-        <Pagination />
+        <InfiniteHits hitComponent={Product} />
       </div>
     </div>
   </div>
 )
 
-export default Results;
+export default ResultsPage

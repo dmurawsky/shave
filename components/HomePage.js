@@ -1,4 +1,3 @@
-import Results from '../components/Results'
 import Slider from 'react-slick'
 
 const arrowStyles = {
