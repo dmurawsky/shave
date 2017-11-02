@@ -8,7 +8,7 @@ const Account = () => (
         <Link href="/orders">
           <div className="card">
             <div className="card-content">
-              <img src="/static/assets/orders.svg" />
+              <img className="card-img" src="/static/assets/orders.svg" />
               <div>
                 <h3>Your Orders</h3>
                 <p>Description</p>
@@ -21,7 +21,7 @@ const Account = () => (
         <Link href="/security">
           <div className="card">
             <div className="card-content">
-              <img src="/static/assets/security.svg" />
+              <img className="card-img" src="/static/assets/security.svg" />
               <div>
                 <h3>Login & Security</h3>
                 <p>Description</p>
@@ -34,7 +34,7 @@ const Account = () => (
         <Link href="/addresses">
           <div className="card">
             <div className="card-content">
-              <img src="/static/assets/addresses.svg" />
+              <img className="card-img" src="/static/assets/addresses.svg" />
               <div>
                 <h3>Your Addresses</h3>
                 <p>Description</p>
@@ -49,7 +49,7 @@ const Account = () => (
         <Link href="/payment-options">
           <div className="card">
             <div className="card-content">
-              <img src="/static/assets/wallet.svg" />
+              <img className="card-img" src="/static/assets/wallet.svg" />
               <div>
                 <h3>Gift Cards</h3>
                 <p>Description</p>
@@ -62,7 +62,7 @@ const Account = () => (
         <Link href="/payment-options">
           <div className="card">
             <div className="card-content">
-              <img src="/static/assets/wallet.svg" />
+              <img className="card-img" src="/static/assets/wallet.svg" />
               <div>
                 <h3>Payment Options</h3>
                 <p>Description</p>
@@ -75,7 +75,7 @@ const Account = () => (
         <Link href="/payment-options">
           <div className="card">
             <div className="card-content">
-              <img src="/static/assets/brotherhood.svg" />
+              <img className="card-img" src="/static/assets/brotherhood.svg" />
               <div>
                 <h3>Brotherhood</h3>
                 <p>Description</p>
@@ -87,7 +87,7 @@ const Account = () => (
     </nav>
     <RecentOrders />
     <style jsx>{`
-      .card-content img {
+      .card-img {
         width: 45px;
         float: left;
         margin-right: 10px;
@@ -103,7 +103,6 @@ const Account = () => (
       }
       .card {
         cursor: pointer;
-        margin: 20px;
         width: 100%;
       }
     `}</style>

@@ -7,10 +7,10 @@ export const initFirebase = (dispatch, isServer) => {
   let uid = null
   if (apps.length === 0) {
     initializeApp(clientCreds)
-    database().ref('products').once('value').then(snap=>snap.val())
-      .then(products => {
+    database().ref('public').once('value').then(snap=>snap.val())
+      .then(({brands,categories,products}) => {
         if (products) {
-          dispatch({ type: 'LOAD_PRODUCTS', products })
+          dispatch({ type: 'LOAD_PUBLIC', products, brands, categories })
           if (!isServer) {
             auth().onAuthStateChanged(user => {
               if (user) {
@@ -45,7 +45,7 @@ const formatCart = (cart, products) => {
     const vals = R.values(cart.items)
     const count = vals.reduce((prev,next) => (prev+next), 0)
     const subtotal = R.values(
-      R.mapObjIndexed((val,key) => (products[key]?(val*products[key].price)/100:0), cart.items)
+      R.mapObjIndexed((val,key) => (products[key]?(val*products[key].price):0), cart.items)
     ).reduce((prev,next) => (prev+next), 0)
     return {...cart, count, subtotal }
   } else {

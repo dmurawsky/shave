@@ -41,7 +41,7 @@ const Order = ({order}) => (
         <div className="level">
           <div className="level-left">
             <div className="level-item">
-              <img src={purchase.product.photo} />
+              <img className="purchase-img" src={purchase.product.photo} />
             </div>
             <div className="level-item">
               <div>
@@ -71,7 +71,7 @@ const Order = ({order}) => (
       .level-item {
         margin: 0 15px;
       }
-      img {
+      img.purchase-img {
         width: 120px;
       }
       .level-right {

@@ -3,28 +3,27 @@ import ProductPage from '../components/ProductPage'
 import withRedux from 'next-redux-wrapper'
 import {initStore} from '../store'
 
-const clientCreds = require('../store/clientCreds.json')
 
-const Product = ({url, product}) => (
+const Product = ({url, product, brand}) => (
   <Layout path={url.pathname} index="PRODUCTS">
-    <ProductPage product={product} />
+    <ProductPage product={product} brand={brand} productId={url.query.id} />
   </Layout>
 )
 
 Product.getInitialProps = async ({req, query}) => {
-  const {initializeApp, apps, database} = require('firebase')
-  if (apps.length === 0) {
-    initializeApp(clientCreds)
+  if (!process.browser) {
+    const {initializeApp, apps, database} = require('firebase')
+    if (apps.length === 0) {
+      const clientCreds = require('../store/clientCreds.json')
+      initializeApp(clientCreds)
+    }
+    const snap = await database().ref('public/products/' + query.id).once('value')
+    const product = snap.val()
+    const brandSnap = await database().ref('public/brands/' + product.brand).once('value')
+    const brand = brandSnap.val()
+    return { product, brand }
   }
-  let id
-  if (process.browser) {
-    id = query.id
-  } else {
-    id = req.query.id
-  }
-  const snap = await database().ref('products/' + id).once('value')
-  const product = snap.val()
-  return { product }
+  return {}
 }
 
 export default withRedux(initStore)(Product)

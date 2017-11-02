@@ -6,21 +6,28 @@ import { initFirebase } from './firebase'
 const initialState = {
   profile: null,
   cart: {
-    items: []
+    items: {},
+    count: 0,
+    subtotal: 0,
   },
+  products: {},
+  brands: {},
+  categories: {},
 }
 
-export const reducer = (
-  state = initialState,
-  {type, profile, cart, products}
-) => {
-  switch (type) {
-    case 'LOAD_PRODUCTS':
-      return {...state, products }
+export const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'LOAD_PUBLIC':
+      return {
+        ...state,
+        products: action.products,
+        brands: action.brands,
+        categories: action.categories,
+      }
     case 'LOAD_PROFILE':
-      return {...state, profile }
+      return {...state, profile: action.profile }
     case 'LOAD_CART':
-      return {...state, cart }
+      return {...state, cart: action.cart }
     default:
       return state
   }

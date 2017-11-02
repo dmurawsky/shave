@@ -16,7 +16,7 @@ const ResultsPage = () => (
         <h2>Category</h2>
         <RefinementList attributeName="category" />
         <h2>Brand</h2>
-        <RefinementList attributeName="brand" withSearchBox />
+        <RefinementList attributeName="brand" />
       </div>
       <div className="column">
         <InfiniteHits hitComponent={Product} />

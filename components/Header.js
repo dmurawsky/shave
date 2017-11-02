@@ -86,7 +86,7 @@ class Header extends React.Component {
               </span>
             </p>
             <div id="searchInput" className="control">
-              <SearchBox placeholder="" />
+              <SearchBox translations={{placeholder:''}} />
             </div>
             <p className="control">
               <a id="searchBtn" className="button">

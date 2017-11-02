@@ -35,27 +35,28 @@ users:
       paymentMethods:
         paymentMethod_id_1:
           last4: '9283'
-products:
-  product_id_1:
-    createdAt: yesterday
-    updatedAt: today
-    name: Shaver
-    price: 2595
-    description: This thing shaves
-    photo: https://s3link.aws.com/209ufjsjdf
-    brand: brand_id_1
-    category_id_1: 1
-    category_id_2: 0
-    recommended:
-      product_id_2: 1
-    reviews:
-      review_id_1:
-        uid: user_auth_id_1
-categories:
-  category_id_1:
-    name: Shavers
-  category_id_2:
-    name: Razors
-brands:
-  brand_id_1:
-    name: American Crew
+public:
+  products:
+    product_id_1:
+      createdAt: yesterday
+      updatedAt: today
+      name: Shaver
+      price: 2595
+      description: This thing shaves
+      photo: https://s3link.aws.com/209ufjsjdf
+      brand: brand_id_1
+      category_id_1: 1
+      category_id_2: 0
+      recommended:
+        product_id_2: 1
+      reviews:
+        review_id_1:
+          uid: user_auth_id_1
+  categories:
+    category_id_1:
+      name: Shavers
+    category_id_2:
+      name: Razors
+  brands:
+    brand_id_1:
+      name: American Crew

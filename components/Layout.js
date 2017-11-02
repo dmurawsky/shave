@@ -17,6 +17,7 @@ const Layout = ({children, path, title, index}) => (
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
       <link rel="stylesheet" type="text/css" href="https://unpkg.com/react-instantsearch-theme-algolia@4.0.0/style.min.css" />
       <link rel="stylesheet" type="text/css" href="/static/styles/global.css" />
+      {path && path.substring(0,5)==='/cart' && <link rel="stylesheet" type="text/css" href="/static/styles/steps.css" />}
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <script src="/static/js/expand-select.js" />
     </Head>

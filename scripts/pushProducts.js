@@ -10,9 +10,9 @@ initializeApp({
   messagingSenderId: '1011084553217'
 })
 
-const catsRef = database().ref('categories')
-const brandsRef = database().ref('brands')
-const prodsRef = database().ref('products')
+const catsRef = database().ref('public/categories')
+const brandsRef = database().ref('public/brands')
+const prodsRef = database().ref('public/products')
 
 let index = 0
 

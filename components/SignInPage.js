@@ -15,20 +15,22 @@ class SignInPage extends React.Component {
     this.state = {
       email: '',
       password: '',
-      error: ''
+      error: '',
     }
   }
 
   _sumbit (e) {
     e.preventDefault()
-    auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+    const {email,password} = this.state
+    auth()signOut()
+      .then(() => auth().signInWithEmailAndPassword(email, password))
       .then(() => {
         window.location.pathname = '/'
       })
       .catch(err => {
-        this.setState({ error: err.message });
-        throw err;
-      });
+        this.setState({ error: err.message })
+        throw err
+      })
   }
 
   _onChange (e) {

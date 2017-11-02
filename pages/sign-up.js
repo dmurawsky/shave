@@ -1,11 +1,15 @@
 import Layout from '../components/Layout'
-import SignUpPage from '../components/SignUpPage'
+import SignUpForm from '../components/SignUpForm'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../store'
 
 const SignUp = ({pathname}) => (
   <Layout path={pathname} index="PRODUCTS" title="Sign Up | American Shave">
-    <SignUpPage />
+    <div id="signUpPage" className="content page">
+      <h1>Sign Up</h1>
+      <hr />
+      <SignUpForm />
+    </div>
   </Layout>
 )
 

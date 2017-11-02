@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "relay": "relay-compiler --src ./ --exclude **/.next/** **/node_modules/** **/test/**  **/__generated__/** --schema ./azotheos.schema",
-    "backup": "graphcool pull --project cj84yneno0fbz0157621ft0m4 && git add . && git commit -m 'backup' && git push",
+    "backup": "git add . && git commit -m 'backup' && git push",
     "deploy": "now -e NODE_ENV=production --public",
     "test": "mocha --timeout 15000"
   },
