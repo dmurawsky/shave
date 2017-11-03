@@ -68,12 +68,9 @@ class PaymentMethods extends React.Component {
           </tbody>
         </table>
         <style jsx>{`
-          #paymentMethods {
-            width: 600px;
-            margin: 0 auto;
-          }
           .table td {
             font-size: 15px;
+            cursor: pointer;
           }
           .table tr.selected td {
             background: #084e6c;
@@ -90,7 +87,6 @@ class PaymentMethods extends React.Component {
 
 
 PaymentMethods.propTypes = {
-  paymentMethods: PropTypes.object,
   selectedPaymentMethod: PropTypes.string,
 }
 

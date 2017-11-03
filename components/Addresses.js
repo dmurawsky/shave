@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
 import {auth, database} from 'firebase'
+import {connect} from 'react-redux'
+
 
 class Addresses extends React.Component {
   constructor (props, context) {
@@ -42,7 +44,7 @@ class Addresses extends React.Component {
   }
 
   _selectAddress (id) {
-    database().ref('users/' + auth().currentUser.uid + '/profile/selectedAddress').set(id)
+    database().ref('users/' + auth().currentUser.uid + '/profile/' + this.props.addressType).set(id)
   }
 
   render () {
@@ -55,11 +57,12 @@ class Addresses extends React.Component {
               <tr
                 key={key}
                 onClick={this._selectAddress.bind(this, key)}
-                className={this.props.selectedAddress===key?'selected':''}
-                >
-                <td>{addresses[key].cardName}</td>
-                <td>{addresses[key].cardType}</td>
-                <td>{'xxxx xxxx xxxx ' + addresses[key].last4}</td>
+                className={this.props.profile[this.props.addressType]===key?'selected':''}
+              >
+                <td>{addresses[key].addressName?addresses[key].addressName:'Unnamed Address'}</td>
+                <td>
+                  {addresses[key].address1} {addresses[key].address2} {addresses[key].city}, {addresses[key].state} {addresses[key].zip}
+                </td>
                 <td className="has-text-right">
                   <a onClick={this._removeAddress.bind(this, key)}>Remove</a>
                 </td>
@@ -68,12 +71,9 @@ class Addresses extends React.Component {
           </tbody>
         </table>
         <style jsx>{`
-          #addresses {
-            width: 600px;
-            margin: 0 auto;
-          }
           .table td {
             font-size: 15px;
+            cursor: pointer;
           }
           .table tr.selected td {
             background: #084e6c;
@@ -90,8 +90,10 @@ class Addresses extends React.Component {
 
 
 Addresses.propTypes = {
-  addresses: PropTypes.object,
-  selectedAddress: PropTypes.string,
+  addressType: PropTypes.string,
+  profile: PropTypes.object,
 }
 
-export default Addresses
+export default connect(s => ({
+  profile: s.profile,
+}))(Addresses);

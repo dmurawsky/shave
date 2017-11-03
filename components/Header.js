@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import {SearchBox} from 'react-instantsearch/dom'
 import Cart from './Cart'
@@ -16,7 +17,6 @@ class Header extends React.Component {
 
   _onChange (e) {
     const target = e.target
-    console.log(target)
     this.setState(()=>({ category: target.value }))
   }
 
@@ -105,18 +105,18 @@ class Header extends React.Component {
             <div id="categoriesNav" className="sub-nav-dropdown navbar-item has-dropdown is-hoverable">
               <a className="navbar-link is-active">Categories</a>
               <div className="navbar-dropdown is-boxed">
-                <a className="navbar-item">Best Sellers</a>
-                <a className="navbar-item">Shave Care</a>
-                <a className="navbar-item">Hair Care</a>
-                <a className="navbar-item">Beard Care</a>
-                <a className="navbar-item">Nail Care</a>
-                <a className="navbar-item">Skin Care</a>
-                <a className="navbar-item">Shave Hardware</a>
-                <a className="navbar-item">Electric Hardware</a>
-                <a className="navbar-item">Maintenance</a>
-                <a className="navbar-item">Accessories</a>
-                <a className="navbar-item">Blade Refills</a>
-                <a className="navbar-item">Leather Goods</a>
+                <Link href="/results"><a className="navbar-item">Best Sellers</a></Link>
+                <Link href="/results"><a className="navbar-item">Shave Care</a></Link>
+                <Link href="/results"><a className="navbar-item">Hair Care</a></Link>
+                <Link href="/results"><a className="navbar-item">Beard Care</a></Link>
+                <Link href="/results"><a className="navbar-item">Nail Care</a></Link>
+                <Link href="/results"><a className="navbar-item">Skin Care</a></Link>
+                <Link href="/results"><a className="navbar-item">Shave Hardware</a></Link>
+                <Link href="/results"><a className="navbar-item">Electric Hardware</a></Link>
+                <Link href="/results"><a className="navbar-item">Maintenance</a></Link>
+                <Link href="/results"><a className="navbar-item">Accessories</a></Link>
+                <Link href="/results"><a className="navbar-item">Blade Refills</a></Link>
+                <Link href="/results"><a className="navbar-item">Leather Goods</a></Link>
               </div>
             </div>
             <a className="navbar-item"><span>SHAVE CARE</span></a>
@@ -168,6 +168,9 @@ class Header extends React.Component {
   }
 }
 
+Header.propTypes = {
+  profile: PropTypes.object,
+}
 
 export default connect(s => ({
   profile: s.profile,

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Link from 'next/link'
 import {auth, database} from 'firebase'
+import {connect} from 'react-redux'
 
 const inputs = [
   { name: 'firstName', placeholder: 'First Name', type: 'text', className: 'is-half-desktop' },
@@ -10,11 +11,6 @@ const inputs = [
   { name: 'confirmEmail', placeholder: 'Confirm Email', type: 'email', className: 'is-half-desktop' },
   { name: 'password', placeholder: 'Password', type: 'password', className: 'is-half-desktop' },
   { name: 'confirmPassword', placeholder: 'Confirm Password', type: 'password', className: 'is-half-desktop' },
-  { name: 'address1', placeholder: 'Address', type: 'text', className: 'is-half-desktop' },
-  { name: 'address2', placeholder: 'Address 2', type: 'text', className: 'is-half-desktop' },
-  { name: 'city', placeholder: 'City', type: 'text', className: 'is-half-desktop' },
-  { name: 'state', placeholder: 'State', type: 'text', className: 'is-one-quarter-desktop' },
-  { name: 'zip', placeholder: 'Zip', type: 'text', className: 'is-one-quarter-desktop' },
 ]
 
 class SignUpForm extends React.Component {
@@ -29,11 +25,6 @@ class SignUpForm extends React.Component {
       confirmEmail: '',
       password: '',
       confirmPassword: '',
-      address1: '',
-      address2: '',
-      city: '',
-      state: '',
-      zip: '',
       error: ''
     }
   }
@@ -65,7 +56,11 @@ class SignUpForm extends React.Component {
     }).then(() => {
       window.location.pathname = this.props.navAfter || '/'
     }).catch(err => {
-      this.setState({ error: err.message })
+      if (err.code === 'auth/provider-already-linked') {
+        this.setState(()=>({ error: 'An account is already created for that user. Please sign in or use email/account.' }))
+      } else {
+        this.setState(()=>({ error: err.message }))
+      }
       throw err
     })
   }
@@ -75,42 +70,64 @@ class SignUpForm extends React.Component {
     this.setState(s=>({[name]:value}))
   }
 
+  _signOut (e) {
+    e.preventDefault()
+    auth().signOut()
+  }
+
   render () {
+    if (this.props.profile) {
+      const {firstName, lastName, email} = this.props.profile
+      return (
+        <div>
+          <h3 className="has-text-centered">You are currently signed in as:</h3>
+          <h2 className="has-text-centered">{firstName} {lastName} ({email})</h2>
+          <button style={{
+            display: 'block',
+            width: '120px',
+            margin: '40px auto',
+          }} className="button is-small" onClick={this._signOut}>Sign Out</button>
+        </div>
+      )
+    }
     return (
-      <form onSubmit={this._sumbit} id="signUpForm">
-        <p className="error-text">{this.state.error}</p>
-        <div className="columns is-desktop is-multiline">
-          {inputs.map(({name, type, placeholder, className}) => (
-            <div key={name} className={'column ' + className}>
-              <div className="field">
-                <label className="label">{placeholder}</label>
-                <div className="control">
-                  <input
-                    name={name}
-                    type={type}
-                    placeholder={placeholder}
-                    className="input"
-                    value={this.state[name]}
-                    onChange={this._onChange}
-                  />
+      <div>
+        <form onSubmit={this._sumbit} id="signUpForm">
+          <p className="error-text">{this.state.error}</p>
+          <div className="columns is-desktop is-multiline">
+            {inputs.map(({name, type, placeholder, className}) => (
+              <div key={name} className={'column ' + className}>
+                <div className="field">
+                  <label className="label">{placeholder}</label>
+                  <div className="control">
+                    <input
+                      name={name}
+                      type={type}
+                      placeholder={placeholder}
+                      className="input"
+                      value={this.state[name]}
+                      onChange={this._onChange}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <button id="submitBtn" type="submit" className="button">Submit</button>
+            ))}
+          </div>
+          <button id="submitBtn" type="submit" className="button">Submit</button>
+        </form>
         <style jsx>{`
-          #signUpForm {
-          }
+          .center-btn {}
         `}</style>
-      </form>
+      </div>
     )
   }
 }
 
-
 SignUpForm.propTypes = {
   navAfter: PropTypes.string,
+  profile: PropTypes.object,
 }
 
-export default SignUpForm;
+export default connect(s => ({
+  profile: s.profile,
+}))(SignUpForm);

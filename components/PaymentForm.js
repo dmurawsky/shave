@@ -25,8 +25,7 @@ class PaymentForm extends React.Component {
       last4: this.state.cardNumber.substring(this.state.cardNumber.length-4),
       cardType: 'Visa',
     }).then(snap => {
-      
-      window.location.pathname = this.props.navAfter || '/account/payment-methods'
+      database().ref('users/' + auth().currentUser.uid + '/profile/selectedPaymentMethod').set(snap.key)
     }).catch(err => {
       this.setState({ error: err.message })
       throw err
@@ -111,21 +110,12 @@ class PaymentForm extends React.Component {
             </div>
           </div>
         </div>
-        <button id="submitBtn" type="submit" className="button">Submit</button>
+        <button id="submitBtn" type="submit" className="button">Save Card</button>
         <style jsx>{`
-          #paymentForm {
-            width: 400px;
-            margin: 0 auto;
-          }
         `}</style>
       </form>
     )
   }
-}
-
-
-PaymentForm.propTypes = {
-  navAfter: PropTypes.string,
 }
 
 export default PaymentForm;
