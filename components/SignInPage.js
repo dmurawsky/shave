@@ -22,7 +22,7 @@ class SignInPage extends React.Component {
   _sumbit (e) {
     e.preventDefault()
     const {email,password} = this.state
-    auth()signOut()
+    auth().signOut()
       .then(() => auth().signInWithEmailAndPassword(email, password))
       .then(() => {
         window.location.pathname = '/'

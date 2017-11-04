@@ -35,7 +35,7 @@ const PaymentPage = ({profile}) => (
         </div>
         <div className="column">
           <h2 className="has-text-centered">Add New Address</h2>
-          <AddressForm />
+          <AddressForm addressType="selectedShippingAddress" />
         </div>
       </div>
     </div>

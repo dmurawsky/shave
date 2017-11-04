@@ -19,7 +19,7 @@ const SignUp = ({url}) => (
       <hr />
       <SignUpForm navAfter="/cart/payment" />
       <Addresses addressType="selectedShippingAddress" />
-      <AddressForm />
+      <AddressForm addressType="selectedShippingAddress" />
     </div>
   </Layout>
 )

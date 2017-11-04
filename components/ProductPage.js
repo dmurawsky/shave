@@ -19,11 +19,6 @@ const ProductPage = ({product, brand, productId, qty}) => (
       <p>{formatPrice(product.price)}</p>
       <AddToCart qty={qty} productId={productId} />
     </div>
-    <style jsx>{`
-      #productPage {
-
-      }
-    `}</style>
   </div>
 )
 

@@ -1,4 +1,5 @@
 import Slider from 'react-slick'
+import ResultsPage from './ResultsPage'
 
 const arrowStyles = {
   backgroundSize: '38px 52px',
@@ -64,14 +65,7 @@ const HomePage = () => (
         <p>Recent Views Description</p>
       </div>
     </section>
-    <section id="homePageHeader">
-      <div>
-        <h1>SHAVE LIKE A BOSS</h1>
-        <h2>SHOP THE BEST BRANDS IN SHAVING</h2>
-        <button>SHOP RAZORS</button>
-      </div>
-      <img src="/static/assets/home-page-header-1.jpg" />
-    </section>
+    <ResultsPage />
     <style jsx>{`
       #homePageBoxes {
         padding: 20px;

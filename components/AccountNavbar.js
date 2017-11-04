@@ -87,8 +87,6 @@ const AccountNavbar = () => (
         </Link>
       </div>
     </nav>
-    <style jsx>{`
-    `}</style>
   </div>
 )
 

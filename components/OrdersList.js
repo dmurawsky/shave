@@ -34,8 +34,6 @@ class OrdersList extends React.Component {
         {Object.keys(orders).map(key=>(
           <Order key={key} orderId={key} order={orders[key]}  />
         ))}
-        <style jsx>{`
-        `}</style>
       </div>
     )
   }

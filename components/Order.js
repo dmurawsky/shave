@@ -63,12 +63,14 @@ class Order extends React.Component {
   }
 
   _getTotal (purchases) {
-    return formatPrice(
-      Object.keys(purchases).reduce((prev, key)=>{
-        const {price, qty} = purchases[key]
-        return (prev + (price * qty))
-      }, 0)
-    )
+    if (purchases) {
+      return formatPrice(
+        Object.keys(purchases).reduce((prev, key)=>{
+          const {price, qty} = purchases[key]
+          return (prev + (price * qty))
+        }, 0)
+      )
+    }
   }
 
   render () {
@@ -127,7 +129,7 @@ class Order extends React.Component {
                   </div>
                   <div className="level-item">
                     <div>
-                      <h3><Link href="/account"><a>{purchase.name}</a></Link></h3>
+                      <h3><Link href={'/product?id=' + purchase.product_id}><a>{purchase.name}</a></Link></h3>
                       <p>{formatPrice(purchase.price)} x {purchase.qty}</p>
                       <p>{formatPrice(purchase.price * purchase.qty)}</p>
                     </div>

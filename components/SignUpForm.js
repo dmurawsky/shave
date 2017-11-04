@@ -37,24 +37,12 @@ class SignUpForm extends React.Component {
         firstName,
         lastName,
         email,
-        address1,
-        address2,
-        city,
-        state,
-        zip,
       } = this.state
       return database().ref('users/' + user.uid + '/profile').update({
         firstName,
         lastName,
         email,
-        address1,
-        address2,
-        city,
-        state,
-        zip,
-      });
-    }).then(() => {
-      window.location.pathname = this.props.navAfter || '/'
+      })
     }).catch(err => {
       if (err.code === 'auth/provider-already-linked') {
         this.setState(()=>({ error: 'An account is already created for that user. Please sign in or use email/account.' }))
@@ -113,11 +101,8 @@ class SignUpForm extends React.Component {
               </div>
             ))}
           </div>
-          <button id="submitBtn" type="submit" className="button">Submit</button>
+          <button id="submitBtn" type="submit" className="button">Sign Up</button>
         </form>
-        <style jsx>{`
-          .center-btn {}
-        `}</style>
       </div>
     )
   }

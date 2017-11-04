@@ -111,8 +111,6 @@ class PaymentForm extends React.Component {
           </div>
         </div>
         <button id="submitBtn" type="submit" className="button">Save Card</button>
-        <style jsx>{`
-        `}</style>
       </form>
     )
   }

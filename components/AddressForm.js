@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Link from 'next/link'
 import {auth, database} from 'firebase'
 
@@ -45,7 +46,7 @@ class AddressForm extends React.Component {
       state,
       zip,
     }).then(snap => {
-      database().ref('users/' + auth().currentUser.uid + '/profile/selectedAddress').set(snap.key)
+      database().ref('users/' + auth().currentUser.uid + '/profile/' + this.props.addressType).set(snap.key)
     }).catch(err => {
       this.setState(()=>({ error: err.message }))
       throw err
@@ -87,6 +88,10 @@ class AddressForm extends React.Component {
       </form>
     )
   }
+}
+
+AddressForm.propTypes = {
+  addressType: PropTypes.string.isRequired,
 }
 
 export default AddressForm

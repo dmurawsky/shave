@@ -19,11 +19,6 @@ const BrandPage = ({products, brand, brandId}) => (
         <ProductFB key={key} fbKey={key} product={products[key]} />
       ))}
     </div>
-    <style jsx>{`
-      #brandPage {
-
-      }
-    `}</style>
   </div>
 )
 
