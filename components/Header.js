@@ -119,6 +119,8 @@ class Header extends React.Component {
                 <Link href="/results"><a className="navbar-item">Leather Goods</a></Link>
               </div>
             </div>
+          </div>
+          <div className="navbar-menu">
             <a className="navbar-item"><span>SHAVE CARE</span></a>
             <a className="navbar-item"><span>SHAVING BRUSH</span></a>
             <a className="navbar-item"><span>RAZORS</span></a>

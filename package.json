@@ -9,10 +9,18 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "relay": "relay-compiler --src ./ --exclude **/.next/** **/node_modules/** **/test/**  **/__generated__/** --schema ./azotheos.schema",
     "backup": "git add . && git commit -m 'backup' && git push",
     "deploy": "now -e NODE_ENV=production --public",
     "test": "mocha --timeout 15000"
+  },
+  "prettier": {
+    "useTabs": false,
+    "printWidth": 80,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "jsxBracketSameLine": true,
+    "semi": false
   },
   "dependencies": {
     "bluebird": "^3.5.0",
