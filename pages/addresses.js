@@ -1,5 +1,5 @@
 import Layout from '../components/Layout'
-import PaymentMethodsPage from '../components/PaymentMethodsPage'
+import AddressesPage from '../components/AddressesPage'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../store'
 
@@ -7,8 +7,8 @@ const Page = ({ url }) => (
   <Layout
     path={url.pathname}
     index="PRODUCTS"
-    title="Manage Payment Methods | American Shave">
-    <PaymentMethodsPage />
+    title="Manage Addresses | American Shave">
+    <AddressesPage />
   </Layout>
 )
 
