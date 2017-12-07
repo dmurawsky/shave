@@ -39,19 +39,6 @@ class ChangePasswordForm extends React.Component {
       <form onSubmit={this._sumbit} id="changePasswordForm">
         <p className="error-text">{this.state.error}</p>
         <div className="field">
-          <label className="label">Current Password</label>
-          <div className="control">
-            <input
-              name="currentPassword"
-              type="password"
-              placeholder="Current Password"
-              className="input"
-              value={currentPassword}
-              onChange={this._onChange}
-            />
-          </div>
-        </div>
-        <div className="field">
           <label className="label">New Password</label>
           <div className="control">
             <input
