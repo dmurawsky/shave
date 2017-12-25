@@ -1,10 +1,9 @@
-import Layout from '../../components/Layout'
+import Layout from '../../layouts/HomeLayout'
 import CartPage from '../../components/cart/CartPage'
 import withRedux from 'next-redux-wrapper'
-import {initStore} from '../../store'
+import { initStore } from '../../store'
 
-
-const Page = ({url}) => (
+const Page = ({ url }) => (
   <Layout path={url.pathname} index="PRODUCTS">
     <CartPage />
   </Layout>

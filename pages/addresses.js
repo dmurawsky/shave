@@ -1,4 +1,4 @@
-import Layout from '../components/Layout'
+import Layout from '../layouts/HomeLayout'
 import AddressesPage from '../components/AddressesPage'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../store'

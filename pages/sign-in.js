@@ -1,12 +1,12 @@
-import Layout from '../components/Layout'
+import AuthLayout from '../layouts/AuthLayout'
 import SignInPage from '../components/SignInPage'
 import withRedux from 'next-redux-wrapper'
 import { initStore } from '../store'
 
-const SignIn = ({pathname}) => (
-  <Layout path={pathname} index="PRODUCTS" title="Sign Up | American Shave">
+const SignIn = ({ pathname }) => (
+  <AuthLayout path={pathname} index="PRODUCTS" title="Sign Up | American Shave">
     <SignInPage />
-  </Layout>
+  </AuthLayout>
 )
 
 export default withRedux(initStore)(SignIn)

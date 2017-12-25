@@ -1,7 +1,15 @@
 require('dotenv').config()
 const algoliasearch = require('algoliasearch')
 
-const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_ADMIN_KEY)
+if (!process.env.ALGOLIA_APP_ID || !process.env.ALGOLIA_ADMIN_KEY) {
+  console.log('ALGOLIA_APP_ID', process.env.ALGOLIA_APP_ID)
+  console.log('ALGOLIA_ADMIN_KEY', process.env.ALGOLIA_ADMIN_KEY)
+}
+
+const client = algoliasearch(
+  process.env.ALGOLIA_APP_ID,
+  process.env.ALGOLIA_ADMIN_KEY,
+)
 const index = client.initIndex(`dev_PRODUCTS`)
 const products = require('./products.json')
 

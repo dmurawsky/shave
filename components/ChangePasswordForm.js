@@ -9,23 +9,31 @@ class ChangePasswordForm extends React.Component {
     this._sumbit = this._sumbit.bind(this)
     this._onChange = this._onChange.bind(this)
     this.state = {
-      currentPassword: '',
       newPassword: '',
       confirmPassword: '',
     }
   }
 
   _sumbit(e) {
+    this.setState(() => ({ error: '' }))
     e.preventDefault()
     const { newPassword, confirmPassword } = this.state
     if (newPassword !== confirmPassword) {
-      this.setState(() => ({ error: 'Passwords do not match' }))
+      return this.setState(() => ({ error: 'Passwords do not match' }))
     }
     const user = auth().currentUser
-    return user.updatePassword(newPassword).catch(err => {
-      this.setState(() => ({ error: err.message }))
-      throw err
-    })
+    return user
+      .updatePassword(newPassword)
+      .then(() => {
+        this.setState(() => ({
+          newPassword: '',
+          confirmPassword: '',
+        }))
+      })
+      .catch(err => {
+        this.setState(() => ({ error: err.message }))
+        throw err
+      })
   }
 
   _onChange(e) {
@@ -34,7 +42,7 @@ class ChangePasswordForm extends React.Component {
   }
 
   render() {
-    const { currentPassword, newPassword, confirmPassword } = this.state
+    const { newPassword, confirmPassword } = this.state
     return (
       <form onSubmit={this._sumbit} id="changePasswordForm">
         <p className="error-text">{this.state.error}</p>
