@@ -48,6 +48,11 @@ const Layout = ({ children, path, title, index }) => (
         type="text/css"
         href="https://unpkg.com/react-instantsearch-theme-algolia@4.0.0/style.min.css"
       />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="/static/styles/nprogress.css"
+      />
       <link rel="stylesheet" type="text/css" href="/static/styles/global.css" />
       {path &&
         path.substring(0, 5) === '/cart' && (

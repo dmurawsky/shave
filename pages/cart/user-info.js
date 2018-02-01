@@ -1,5 +1,4 @@
 import Layout from '../../layouts/HomeLayout'
-import SignUpForm from '../../components/SignUpForm'
 import AddressForm from '../../components/AddressForm'
 import Addresses from '../../components/Addresses'
 import withRedux from 'next-redux-wrapper'
@@ -21,7 +20,6 @@ const SignUp = ({ url }) => (
         </Link>
       </h1>
       <hr />
-      <SignUpForm navAfter="/cart/payment" />
       <Addresses addressType="selectedShippingAddress" />
       <AddressForm addressType="selectedShippingAddress" />
     </div>

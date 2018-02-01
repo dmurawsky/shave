@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "backup": "git add . && git commit -m 'backup' && git push",
-    "deploy": "now -e NODE_ENV=production --public",
+    "deploy":
+      "now -e NODE_ENV=production --public && now alias `pbpaste` shave && now scale `pbpaste` 1 1",
     "buildIndex": "node ./scripts/indexPush.js",
     "test": "mocha --timeout 15000"
   },
@@ -33,6 +34,7 @@
     "moment": "^2.19.1",
     "next": "^4.0.0-beta.2",
     "next-redux-wrapper": "^1.3.4",
+    "nprogress": "^0.2.0",
     "prop-types": "^15.6.0",
     "ramda": "^0.25.0",
     "react": "^16.0.0",

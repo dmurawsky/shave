@@ -5,6 +5,12 @@ import { SearchBox } from 'react-instantsearch/dom'
 import Cart from './Cart'
 import { connect } from 'react-redux'
 import { auth } from 'firebase'
+import NProgress from 'nprogress'
+import Router from 'next/router'
+
+Router.onRouteChangeStart = () => NProgress.start()
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
 
 class Header extends React.Component {
   constructor(props, context) {
