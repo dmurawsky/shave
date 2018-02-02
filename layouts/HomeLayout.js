@@ -4,7 +4,7 @@ import { InstantSearch } from 'react-instantsearch/dom'
 import Header from './Header'
 import UserTestActions from './UserTestActions'
 
-const Layout = ({ children, path, title, index }) => (
+const Layout = ({ children, path, title, index = 'PRODUCTS' }) => (
   <div>
     <Head>
       <title>{title ? title : 'American Shave'}</title>
@@ -67,8 +67,8 @@ const Layout = ({ children, path, title, index }) => (
     </Head>
     <div id="topAd">Advertisement</div>
     <InstantSearch
-      appId="N72Y5ERUCE"
-      apiKey="dcee9bc88d5919da2b07077fed9ad48b"
+      appId="Q7V2LH7A0P"
+      apiKey="15a7703343dfb8c21c5232db46420373"
       indexName={
         process.env.NODE_ENV === 'production' ? 'prod_' + index : 'dev_' + index
       }>

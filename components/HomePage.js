@@ -7,22 +7,30 @@ const arrowStyles = {
   width: 37,
 }
 
-const PrevArrow = ({className, style, onClick}) => (
+const PrevArrow = ({ className, style, onClick }) => (
   <span
     className={className}
-    style={{...style, ...arrowStyles, backgroundImage: 'url(/static/assets/left-arrow.png)'}}
+    style={{
+      ...style,
+      ...arrowStyles,
+      backgroundImage: 'url(/static/assets/left-arrow.png)',
+    }}
     onClick={onClick}
   />
 )
-const NextArrow = ({className, style, onClick}) => (
+const NextArrow = ({ className, style, onClick }) => (
   <span
     className={className}
-    style={{...style, ...arrowStyles, backgroundImage: 'url(/static/assets/right-arrow.png)'}}
+    style={{
+      ...style,
+      ...arrowStyles,
+      backgroundImage: 'url(/static/assets/right-arrow.png)',
+    }}
     onClick={onClick}
   />
 )
 
-const settings = {
+const sliderSettings = {
   dots: false,
   infinite: true,
   speed: 500,
@@ -32,36 +40,52 @@ const settings = {
   nextArrow: <NextArrow />,
 }
 
-const HomePage = () => (
+const HomePage = ({ settings }) => (
   <div id="homePage">
-    <Slider {...settings}>
-      <div className="home-slide"><div style={{backgroundImage: 'url(/static/assets/slides/slide1.jpeg)'}} /></div>
-      <div className="home-slide"><div style={{backgroundImage: 'url(/static/assets/slides/slide2.jpeg)'}} /></div>
-      <div className="home-slide"><div style={{backgroundImage: 'url(/static/assets/slides/slide3.jpeg)'}} /></div>
+    <Slider {...sliderSettings}>
+      {settings &&
+        settings.slides &&
+        settings.slides.map((img, i) => (
+          <div key={`home_slid_${i}`} className="home-slide">
+            <div style={{ backgroundImage: `url(${img})` }} />
+          </div>
+        ))}
     </Slider>
     <section id="homePageBoxes">
       <div className="card home-box">
-        <p className="home-title" style={{borderBottom: 'solid 5px #333'}}>Brotherhood Rewards</p>
+        <p className="home-title" style={{ borderBottom: 'solid 5px #333' }}>
+          Brotherhood Rewards
+        </p>
         <p>Brotherhood Rewards Description</p>
       </div>
       <div className="card home-box">
-        <p className="home-title" style={{borderBottom: 'solid 5px #0A4D6D'}}>The Shave Expert</p>
+        <p className="home-title" style={{ borderBottom: 'solid 5px #0A4D6D' }}>
+          The Shave Expert
+        </p>
         <p>The Shave Expert Description</p>
       </div>
       <div className="card home-box">
-        <p className="home-title" style={{borderBottom: 'solid 5px #444'}}>Build Your Set</p>
+        <p className="home-title" style={{ borderBottom: 'solid 5px #444' }}>
+          Build Your Set
+        </p>
         <p>Build Your Set Description</p>
       </div>
       <div className="card home-box">
-        <p className="home-title" style={{borderBottom: 'solid 5px #156085'}}>Replenishment Serivce</p>
+        <p className="home-title" style={{ borderBottom: 'solid 5px #156085' }}>
+          Replenishment Serivce
+        </p>
         <p>Replenishment Serivce Description</p>
       </div>
       <div className="card home-box">
-        <p className="home-title" style={{borderBottom: 'solid 5px #666'}}>Barber Services</p>
+        <p className="home-title" style={{ borderBottom: 'solid 5px #666' }}>
+          Barber Services
+        </p>
         <p>Barber Services Description</p>
       </div>
       <div className="card home-box">
-        <p className="home-title" style={{borderBottom: 'solid 5px #327392'}}>Recent Views</p>
+        <p className="home-title" style={{ borderBottom: 'solid 5px #327392' }}>
+          Recent Views
+        </p>
         <p>Recent Views Description</p>
       </div>
     </section>
@@ -97,4 +121,4 @@ const HomePage = () => (
   </div>
 )
 
-export default HomePage;
+export default HomePage

@@ -13,6 +13,7 @@ const initialState = {
   products: {},
   brands: {},
   categories: {},
+  settings: {},
 }
 
 export const reducer = (state = initialState, action) => {
@@ -25,16 +26,20 @@ export const reducer = (state = initialState, action) => {
         categories: action.categories,
       }
     case 'LOAD_PROFILE':
-      return {...state, profile: action.profile }
+      return { ...state, profile: action.profile }
     case 'LOAD_CART':
-      return {...state, cart: action.cart }
+      return { ...state, cart: action.cart }
     default:
       return state
   }
 }
 
-export const initStore = (state = initialState, {isServer}) => {
-  const store = createStore(reducer, state, composeWithDevTools(applyMiddleware(thunkMiddleware)))
+export const initStore = (state = initialState, { isServer }) => {
+  const store = createStore(
+    reducer,
+    state,
+    composeWithDevTools(applyMiddleware(thunkMiddleware)),
+  )
   initFirebase(store.dispatch, isServer)
   return store
 }
